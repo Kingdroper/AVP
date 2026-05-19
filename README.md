@@ -1,91 +1,136 @@
-# AVP Project Page
+# Action with Visual Primitives (AVP)
 
-Static landing page for *Action with Visual Primitives* (AVP), in
-DreamBooth/Imagen style: dark theme, gradient accents, scroll-reveal
-animations, and video tiles you can swap in later.
+**Project page · CoRL 2026 (preprint)**
 
-## Local preview
+🌐 **Live site:** [kingdroper.github.io/AVP](https://kingdroper.github.io/AVP/)
 
-No build step — just open `index.html` in a browser, or serve locally:
+<p align="center">
+  <img src="static/images/framework.png" alt="AVP framework overview" width="100%" />
+</p>
 
-```bash
-cd AVP
-python3 -m http.server 8000
-# then visit http://localhost:8000
+---
+
+## TL;DR
+
+Vision-Language-Action (VLA) models commonly map language instructions and
+visual observations to actions in a *single forward pass*. While conceptually
+simple, this entangles instruction comprehension, spatial scene understanding,
+and motor control within one learning objective, so the action expert must
+implicitly relearn cognitive and perceptual capabilities already present in the
+pretrained VLM.
+
+We propose **AVP (Action with Visual Primitives)**, an end-to-end VLA
+architecture with a **visual-primitive-centric interface** between the VLM and
+the action expert: the VLM infers the next-stage target and emits compact,
+spatially grounded primitive tokens (points, boxes, sub-goal markers,
+memory-and-order anchors); the action expert consumes these tokens and focuses
+solely on kinematic mapping. Primitive supervision is derived directly from
+end-effector kinematics, eliminating the need for manual spatial annotation.
+
+On real-robot pick-and-place tasks, AVP improves success rate by **27.61% over
+π₀.₅** and outperforms other recent methods, with consistent gains in data
+efficiency, spatial-compositional generalization, and object-level transfer.
+
+## Key ideas
+
+- **Explicit VLM ↔ action-expert interface.** A *Policy Steering* channel
+  carries visual primitives from a reasoning-capable VLM to a flow-matching
+  action expert, demarcating their learning responsibilities and avoiding
+  duplicated perception inside the policy.
+- **Form-agnostic primitive protocol.** Points, bounding boxes, sub-goal
+  markers, memory primitives, and order-and-memory primitives all flow through
+  the same interface — without changing the underlying policy architecture.
+- **Kinematics-derived supervision.** Ground-truth primitives are projected
+  from the recorded end-effector trajectory plus a one-time camera
+  calibration, so the supervision pipeline scales to new platforms at
+  essentially zero additional annotation cost.
+
+## Visual primitives we study
+
+<p align="center">
+  <img src="static/images/primitives.png" alt="Four kinds of visual primitives" width="100%" />
+</p>
+
+1. **Pose Primitives** — single-step end-effector anchors (grasp + placement).
+2. **Goal Primitives** — (source, destination) region pairs per sub-task.
+3. **Memory Primitives** — markers that persist across frames so the model can
+   refer to objects that have left the field of view.
+4. **Order + Memory Primitives** — explicit indices (1 → 2 → 3, turning red
+   once executed) for sequential targeting.
+
+## Demos
+
+The project page hosts real-robot rollouts on:
+
+| Task | Highlights |
+|---|---|
+| Chinese chess manipulation | Dense-board sequential moves |
+| Multi-instruction composition (red / black) | Chained instructions in one rollout |
+| Cross-domain generalization | Zero-shot transfer to unseen objects and backgrounds |
+| Snake-game sequential targeting | Long-horizon ordered targeting via memory-and-order primitives |
+
+See them in action on the [live project page](https://kingdroper.github.io/AVP/#demos).
+
+## Authors
+
+<sub><sup>*</sup>Equal contribution &nbsp;·&nbsp; <sup>†</sup>Project Leader &nbsp;·&nbsp; <sup>‡</sup>Corresponding author</sub>
+
+| | Affiliation |
+|---|---|
+| **Weilong Guo**<sup>\*†‡</sup> | Anyverse Dynamics |
+| **Yuchen Wang**<sup>\*</sup> | Tsinghua University |
+| Renping Zhou | Tsinghua University |
+| Yunfeng Zhang | Anyverse Dynamics |
+| Rui Fang | Anyverse Dynamics |
+| Yue Meng | Anyverse Dynamics |
+| **Wenda Xu**<sup>‡</sup> | Anyverse Dynamics |
+| Yuan He | Anyverse Dynamics |
+| **Gao Huang**<sup>‡</sup> | Tsinghua University |
+
+## Citation
+
+```bibtex
+@inproceedings{guo2026avp,
+  title     = {Action with Visual Primitives},
+  author    = {Guo, Weilong and Wang, Yuchen and Zhou, Renping and Zhang, Yunfeng
+               and Fang, Rui and Meng, Yue and Xu, Wenda and He, Yuan and Huang, Gao},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year      = {2026}
+}
 ```
 
-(A real HTTP server is recommended over `file://` so the browser doesn't
-block any future video loads.)
+---
 
-## Project layout
+## About this repository
+
+This repo hosts the static [project page](https://kingdroper.github.io/AVP/)
+for AVP. No build step — plain HTML / CSS / JS deployed via GitHub Pages.
+
+### Local preview
+
+```bash
+git clone https://github.com/Kingdroper/AVP.git
+cd AVP
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+### Layout
 
 ```
 AVP/
-├── index.html               ← main page
-├── .nojekyll                ← tells GitHub Pages to skip Jekyll
-├── README.md                ← you are here
+├── index.html               main page
+├── README.md                this file
+├── .nojekyll                tells GitHub Pages to skip Jekyll
 └── static/
-    ├── css/style.css        ← all styling
-    ├── js/main.js           ← scroll reveal + bibtex copy
-    ├── images/
-    │   ├── framework.png    ← AVP framework figure
-    │   └── primitives.png   ← visual-primitive taxonomy figure
-    └── videos/
-        └── README.md        ← instructions for adding demo clips
+    ├── css/style.css        dark-theme styling + animations
+    ├── js/main.js           scroll reveal + bibtex copy
+    ├── images/              framework & primitives figures
+    └── videos/              demo clips (web-optimized) + posters
 ```
 
-## Editing tips
+### Adding a new demo video
 
-| Want to … | Where |
-|---|---|
-| Update title / abstract | `index.html`, top of `<header class="hero">` and `#abstract` section |
-| Change author list | `index.html`, `.authors` block |
-| Update paper / code / video buttons | `index.html`, `.cta` block (replace the `href="#"` placeholders) |
-| Update BibTeX | `index.html`, `#bibtex-block` |
-| Swap a video placeholder for a real clip | see `static/videos/README.md` |
-| Re-color | edit CSS variables at the top of `static/css/style.css` |
-
-## Deploying to GitHub Pages
-
-You said the final URL will be `https://kingdroper.github.io/AVP`.
-Recommended setup:
-
-1. Create a new GitHub repo named `avp` (lowercase, matches the URL).
-2. From this `AVP/` directory:
-
-   ```bash
-   cd /Users/weilongguo/Desktop/code/papers/anyvla_01/AVP
-   git init
-   git add .
-   git commit -m "Initial AVP project page"
-   git branch -M main
-   git remote add origin git@github.com:Kingdroper/AVP.git
-   git push -u origin main
-   ```
-
-3. On GitHub: repo → **Settings → Pages** → set **Source = main / root**.
-4. Wait ~30 s; the site appears at
-   `https://kingdroper.github.io/AVP/`.
-
-`.nojekyll` is already present, so directories that start with `_`
-(if any are added later) will be served as-is.
-
-## Things still using placeholders
-
-- **Paper button** (`href="#"`) — link to arXiv / OpenReview when ready
-- **Code button** (`href="#"`) — link to the code repo when public
-- **Author profile links** (each `<a href="#">`) — set to each author's
-  homepage when you want them clickable
-- **Demo video tiles** — see `static/videos/README.md`
-- **BibTeX `booktitle`** — currently `Conference on Robot Learning (CoRL)`,
-  update to whatever venue the paper appears at
-- Author affiliation footnote: currently lists `Anyverse Dynamics` and
-  `Tsinghua University`; adjust if other affiliations are added
-
-## Custom domain (optional)
-
-If you later want `avp.your-org.com` instead of `*.github.io/avp`:
-
-1. Add a `CNAME` file in this directory containing your domain.
-2. Point a DNS `CNAME` record at `<your-username>.github.io`.
-3. Enable HTTPS in repo Settings → Pages.
+See `static/videos/README.md` for the ffmpeg one-liner used to compress clips
+for web playback, and for the HTML snippet that swaps a placeholder tile for a
+real `<video>` element.
