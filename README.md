@@ -1,6 +1,6 @@
 # Action with Visual Primitives (AVP)
 
-**Project page · CoRL 2026 (preprint)**
+**Project page · Preprint, 2026**
 
 🌐 **Live site:** [kingdroper.github.io/AVP](https://kingdroper.github.io/AVP/)
 
@@ -90,12 +90,12 @@ See them in action on the [live project page](https://kingdroper.github.io/AVP/#
 ## Citation
 
 ```bibtex
-@inproceedings{guo2026avp,
-  title     = {Action with Visual Primitives},
-  author    = {Guo, Weilong and Wang, Yuchen and Zhou, Renping and Zhang, Yunfeng
-               and Fang, Rui and Meng, Yue and Xu, Wenda and He, Yuan and Huang, Gao},
-  booktitle = {Conference on Robot Learning (CoRL)},
-  year      = {2026}
+@article{guo2026avp,
+  title   = {Action with Visual Primitives},
+  author  = {Guo, Weilong and Wang, Yuchen and Zhou, Renping and Zhang, Yunfeng
+             and Fang, Rui and Meng, Yue and Xu, Wenda and He, Yuan and Huang, Gao},
+  journal = {arXiv preprint},
+  year    = {2026}
 }
 ```
 
