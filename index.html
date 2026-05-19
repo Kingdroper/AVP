@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVP — Action with Visual Primitives</title>
+  <meta name="description" content="AVP (Action with Visual Primitives): an end-to-end VLA architecture with a visual-primitive-centric interface between the VLM and the action expert." />
+  <meta property="og:title" content="Action with Visual Primitives (AVP)" />
+  <meta property="og:description" content="A visual-primitive-centric interface between the VLM and the action expert for end-to-end VLAs." />
+  <meta property="og:image" content="static/images/framework.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+
+<!-- Animated gradient background -->
+<div class="bg-gradient"></div>
+<div class="bg-grain"></div>
+
+<!-- Sticky nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">AVP</a>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#method">Method</a>
+      <a href="#primitives">Primitives</a>
+      <a href="#demos">Demos</a>
+      <a href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header id="top" class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">CoRL 2026 · Preprint</div>
+    <h1 class="hero-title">
+      <span class="grad">Action with Visual Primitives</span>
+    </h1>
+    <p class="hero-tagline">
+      A visual&#8209;primitive&#8209;centric interface between the
+      <span class="hl">VLM</span> and the <span class="hl">action expert</span>
+      for end&#8209;to&#8209;end Vision&#8209;Language&#8209;Action models.
+    </p>
+
+    <div class="authors">
+      <span class="author"><a href="#">Weilong Guo</a><sup>*†‡,1</sup></span>
+      <span class="author"><a href="#">Yuchen Wang</a><sup>*,2</sup></span>
+      <span class="author"><a href="#">Renping Zhou</a><sup>2</sup></span>
+      <span class="author"><a href="#">Yunfeng Zhang</a><sup>1</sup></span>
+      <span class="author"><a href="#">Rui Fang</a><sup>1</sup></span>
+      <span class="author"><a href="#">Yue Meng</a><sup>1</sup></span>
+      <span class="author"><a href="#">Wenda Xu</a><sup>‡,1</sup></span>
+      <span class="author"><a href="#">Yuan He</a><sup>1</sup></span>
+      <span class="author"><a href="#">Gao Huang</a><sup>‡,2</sup></span>
+    </div>
+
+    <div class="affil">
+      <span><sup>1</sup>Anyverse Dynamics</span>
+      <span class="sep">·</span>
+      <span><sup>2</sup>Tsinghua University</span>
+    </div>
+    <div class="affil legend">
+      <span><sup>*</sup>Equal contribution</span>
+      <span class="sep">·</span>
+      <span><sup>†</sup>Project Leader</span>
+      <span class="sep">·</span>
+      <span><sup>‡</sup>Corresponding author</span>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="#">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm-1 7V3.5L18.5 9H13Z"/></svg>
+        Paper
+      </a>
+      <a class="btn" href="#">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.69.42.36.8 1.07.8 2.16v3.2c0 .31.21.68.8.56C20.21 21.38 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+        Code (coming soon)
+      </a>
+      <a class="btn" href="#demos">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        Videos
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Abstract -->
+<section id="abstract" class="section reveal">
+  <div class="container">
+    <div class="eyebrow center">Abstract</div>
+    <h2 class="section-title">Why a <em>visual&#8209;primitive</em> interface?</h2>
+    <div class="card abstract-card">
+      <p>
+        Vision&#8209;Language&#8209;Action (VLA) models commonly map language
+        instructions and visual observations to actions in a single forward pass.
+        While conceptually simple, this formulation entangles instruction
+        comprehension, spatial scene understanding, and motor control within one
+        learning objective, so the action expert must implicitly relearn cognitive
+        and perceptual capabilities already present in the pretrained VLM.
+      </p>
+      <p>
+        We introduce <b>AVP (Action with Visual Primitives)</b>, an end&#8209;to&#8209;end
+        architecture that mitigates this entanglement through a
+        <em>visual&#8209;primitive&#8209;centric</em> interface. The VLM infers the
+        next&#8209;stage target and emits compact, spatially grounded primitive
+        tokens; the action expert consumes these tokens and focuses on
+        kinematic mapping. Primitive supervision is derived directly from
+        end&#8209;effector kinematics, eliminating the need for manual spatial
+        annotation. Real&#8209;robot experiments on general pick&#8209;and&#8209;place tasks
+        show that AVP improves success rate by <b>27.61%</b> over
+        <span class="mono">π0.5</span> and outperforms other recent methods.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Method / Framework -->
+<section id="method" class="section reveal">
+  <div class="container">
+    <div class="eyebrow center">Method</div>
+    <h2 class="section-title">Framework overview</h2>
+    <p class="section-lead">
+      A pretrained VLM and an autoregressive multi&#8209;modal decoder produce
+      interleaved text&nbsp;/&nbsp;vision&nbsp;/&nbsp;goal&#8209;image reasoning tokens.
+      The <b>Policy&nbsp;Steering</b> channel routes the resulting visual primitives
+      into a flow&#8209;matching action expert that outputs continuous actions.
+    </p>
+    <figure class="figure">
+      <img src="static/images/framework.png" alt="AVP framework overview" />
+      <figcaption>
+        AVP treats the VLM&#8596;action&#8209;expert boundary as an explicit
+        design choice. This paper instantiates the vision&#8209;reasoning and
+        Policy&#8209;Steering core; goal&#8209;image generation is left to future work.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Visual Primitives Taxonomy -->
+<section id="primitives" class="section reveal">
+  <div class="container">
+    <div class="eyebrow center">Visual Primitives</div>
+    <h2 class="section-title">Four instantiations of the interface protocol</h2>
+    <p class="section-lead">
+      Visual primitives are intentionally <b>lightweight</b> and <b>form&#8209;agnostic</b>.
+      The same protocol covers single&#8209;step poses, sub&#8209;goal regions,
+      memory&#8209;carrying anchors that persist across frames, and ordered
+      sequences of targets &mdash; without changing the underlying policy.
+    </p>
+    <figure class="figure">
+      <img src="static/images/primitives.png" alt="Four kinds of visual primitives" />
+    </figure>
+
+    <div class="grid grid-4">
+      <div class="card primitive-card">
+        <div class="ptag">(a)</div>
+        <h3>Pose Primitives</h3>
+        <p>Single&#8209;step end&#8209;effector anchors marking a current grasp (green) and a target placement (blue). Sufficient for simple pick&#8209;and&#8209;place.</p>
+      </div>
+      <div class="card primitive-card">
+        <div class="ptag">(b)</div>
+        <h3>Goal Primitives</h3>
+        <p>Each sub&#8209;task encoded as a (source, destination) pair of object regions &mdash; the desired next state without rendering an explicit goal image.</p>
+      </div>
+      <div class="card primitive-card">
+        <div class="ptag">(c)</div>
+        <h3>Memory Primitives</h3>
+        <p>Markers persist across frames so the model can refer to objects that are no longer visible &mdash; e.g.&nbsp;a chess piece's original cell after it is picked up.</p>
+      </div>
+      <div class="card primitive-card">
+        <div class="ptag">(d)</div>
+        <h3>Order&nbsp;+&nbsp;Memory</h3>
+        <p>Explicit ordering &mdash; each interaction target is labelled with an index (1&rarr;2&rarr;3) that turns red once executed &mdash; for sequential tasks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Demos -->
+<section id="demos" class="section reveal">
+  <div class="container">
+    <div class="eyebrow center">Real&#8209;Robot Demos</div>
+    <h2 class="section-title">Videos coming soon</h2>
+    <p class="section-lead">
+      A selection of real&#8209;world rollouts on Chinese chess manipulation, domino
+      placement, and general pick&#8209;and&#8209;place. <em>Drop your <span class="mono">.mp4</span>
+      files into <span class="mono">static/videos/</span> and reference them below.</em>
+    </p>
+
+    <div class="grid grid-3 video-grid">
+      <!-- Demo tile template. Replace src=... and remove .placeholder when ready. -->
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">Chinese Chess</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>Sequential piece moves</h4>
+        <p>Dense&#8209;board spatial precision under structured instructions.</p>
+      </div>
+
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">Domino</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>Bimanual orientation placement</h4>
+        <p>Target&#8209;pose placement with angular tolerance under 10&deg;.</p>
+      </div>
+
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">Pick &amp; Place</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>General object manipulation</h4>
+        <p>Diverse object appearances and geometric shapes.</p>
+      </div>
+
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">OOD</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>Cross&#8209;domain generalization</h4>
+        <p>Zero&#8209;shot transfer to unseen objects and backgrounds.</p>
+      </div>
+
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">Compositional</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>Spatial composition</h4>
+        <p>Unseen direct A&rarr;B transitions composed from trained A&rarr;C&rarr;B.</p>
+      </div>
+
+      <div class="video-card placeholder">
+        <div class="video-thumb">
+          <span class="badge">Ablation</span>
+          <div class="play"></div>
+          <span class="coming">Coming soon</span>
+        </div>
+        <h4>With / without primitives</h4>
+        <p>Side&#8209;by&#8209;side rollouts isolating the contribution of the interface.</p>
+      </div>
+    </div>
+
+    <!--
+    To swap a placeholder for a real video, replace the .video-thumb block with:
+      <video src="static/videos/your-clip.mp4"
+             poster="static/videos/your-poster.jpg"
+             muted loop playsinline preload="metadata"
+             onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
+      </video>
+    -->
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section id="bibtex" class="section reveal">
+  <div class="container narrow">
+    <div class="eyebrow center">Citation</div>
+    <h2 class="section-title">BibTeX</h2>
+    <div class="bibtex">
+      <button class="copy-btn" onclick="copyBibtex(this)">Copy</button>
+<pre><code id="bibtex-block">@inproceedings{guo2026avp,
+  title     = {Action with Visual Primitives},
+  author    = {Guo, Weilong and Wang, Yuchen and Zhou, Renping and Zhang, Yunfeng
+               and Fang, Rui and Meng, Yue and Xu, Wenda and He, Yuan and Huang, Gao},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      Template inspired by
+      <a href="https://nerfies.github.io">Nerfies</a> and
+      <a href="https://dreambooth.github.io">DreamBooth</a>.
+      Source is available under the MIT License.
+    </p>
+    <p class="muted">&copy; 2026 AVP authors.</p>
+  </div>
+</footer>
+
+<script src="static/js/main.js"></script>
+</body>
+</html>
