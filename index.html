@@ -197,76 +197,81 @@
     </p>
 
     <div class="grid grid-3 video-grid">
-      <!-- Demo tile template. Replace src=... and remove .placeholder when ready. -->
-      <div class="video-card placeholder">
+      <div class="video-card">
         <div class="video-thumb">
           <span class="badge">Chinese Chess</span>
-          <div class="play"></div>
-          <span class="coming">Coming soon</span>
+          <video src="static/videos/chess.mp4"
+                 poster="static/videos/chess-poster.jpg"
+                 muted loop playsinline preload="metadata"
+                 onmouseover="this.play()"
+                 onmouseout="this.pause();this.currentTime=0;"></video>
         </div>
-        <h4>Sequential piece moves</h4>
-        <p>Dense&#8209;board spatial precision under structured instructions.</p>
+        <h4>Chinese chess manipulation</h4>
+        <p>Dense&#8209;board sequential moves at 5&times; playback.</p>
       </div>
 
-      <div class="video-card placeholder">
+      <div class="video-card">
         <div class="video-thumb">
-          <span class="badge">Domino</span>
-          <div class="play"></div>
-          <span class="coming">Coming soon</span>
+          <span class="badge">Compositional</span>
+          <video src="static/videos/multi_red.mp4"
+                 poster="static/videos/multi_red-poster.jpg"
+                 muted loop playsinline preload="metadata"
+                 onmouseover="this.play()"
+                 onmouseout="this.pause();this.currentTime=0;"></video>
         </div>
-        <h4>Bimanual orientation placement</h4>
-        <p>Target&#8209;pose placement with angular tolerance under 10&deg;.</p>
+        <h4>Multi&#8209;instruction composition &mdash; red side</h4>
+        <p>Chained instructions executed in sequence on the red side.</p>
       </div>
 
-      <div class="video-card placeholder">
+      <div class="video-card">
         <div class="video-thumb">
-          <span class="badge">Pick &amp; Place</span>
-          <div class="play"></div>
-          <span class="coming">Coming soon</span>
+          <span class="badge">Compositional</span>
+          <video src="static/videos/multi_black.mp4"
+                 poster="static/videos/multi_black-poster.jpg"
+                 muted loop playsinline preload="metadata"
+                 onmouseover="this.play()"
+                 onmouseout="this.pause();this.currentTime=0;"></video>
         </div>
-        <h4>General object manipulation</h4>
-        <p>Diverse object appearances and geometric shapes.</p>
+        <h4>Multi&#8209;instruction composition &mdash; black side</h4>
+        <p>Same protocol, mirrored to the black side &mdash; symmetric generalization.</p>
       </div>
 
-      <div class="video-card placeholder">
+      <div class="video-card">
         <div class="video-thumb">
           <span class="badge">OOD</span>
-          <div class="play"></div>
-          <span class="coming">Coming soon</span>
+          <video src="static/videos/ood.mp4"
+                 poster="static/videos/ood-poster.jpg"
+                 muted loop playsinline preload="metadata"
+                 onmouseover="this.play()"
+                 onmouseout="this.pause();this.currentTime=0;"></video>
         </div>
         <h4>Cross&#8209;domain generalization</h4>
         <p>Zero&#8209;shot transfer to unseen objects and backgrounds.</p>
       </div>
 
-      <div class="video-card placeholder">
+      <div class="video-card">
         <div class="video-thumb">
-          <span class="badge">Compositional</span>
-          <div class="play"></div>
-          <span class="coming">Coming soon</span>
+          <span class="badge">Long&#8209;Horizon</span>
+          <video src="static/videos/snake.mp4"
+                 poster="static/videos/snake-poster.jpg"
+                 muted loop playsinline preload="metadata"
+                 onmouseover="this.play()"
+                 onmouseout="this.pause();this.currentTime=0;"></video>
         </div>
-        <h4>Spatial composition</h4>
-        <p>Unseen direct A&rarr;B transitions composed from trained A&rarr;C&rarr;B.</p>
+        <h4>Snake&#8209;game sequential targeting</h4>
+        <p>Long&#8209;horizon ordered targeting driven by memory&#8209;and&#8209;order primitives.</p>
       </div>
 
       <div class="video-card placeholder">
         <div class="video-thumb">
-          <span class="badge">Ablation</span>
+          <span class="badge">More</span>
           <div class="play"></div>
           <span class="coming">Coming soon</span>
         </div>
-        <h4>With / without primitives</h4>
-        <p>Side&#8209;by&#8209;side rollouts isolating the contribution of the interface.</p>
+        <h4>Additional demos</h4>
+        <p>More rollouts &mdash; domino placement, general pick&#8209;and&#8209;place &mdash; will be added here.</p>
       </div>
     </div>
-
-    <!--
-    To swap a placeholder for a real video, replace the .video-thumb block with:
-      <video src="static/videos/your-clip.mp4"
-             poster="static/videos/your-poster.jpg"
-             muted loop playsinline preload="metadata"
-             onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
-      </video>
-    -->
   </div>
 </section>
 

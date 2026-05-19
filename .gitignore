@@ -1,0 +1,10 @@
+# Original/uncompressed video sources — kept locally as backup, not pushed.
+# Only the web-friendly compressed versions (chess.mp4, ood.mp4, etc.) are tracked.
+static/videos/demo_ac_x5.mp4
+static/videos/OOD_demo.mp4
+static/videos/贪吃蛇_out3.mp4
+static/videos/多指令组合_红方.mp4
+static/videos/多指令组合_黑方.mp4
+
+# macOS junk
+.DS_Store
