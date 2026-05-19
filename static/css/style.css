@@ -270,6 +270,9 @@ a:hover { opacity: 0.8; }
 /* =================================================================
    Video grid
    ================================================================= */
+/* Center the last row when 5 items in a 3-col grid */
+.video-grid { justify-content: center; }
+
 .video-card {
   background: var(--card);
   border: 1px solid var(--card-border);
