@@ -5,6 +5,10 @@ static/videos/OOD_demo.mp4
 static/videos/贪吃蛇_out3.mp4
 static/videos/多指令组合_红方.mp4
 static/videos/多指令组合_黑方.mp4
+static/videos/多米诺骨牌.mov
+static/videos/通用物体抓取.mov
+static/videos/象棋连续走子.mov
+static/videos/象棋姿态调整.mov
 
 # macOS junk
 .DS_Store
