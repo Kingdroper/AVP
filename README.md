@@ -84,7 +84,7 @@ See them in action on the [live project page](https://kingdroper.github.io/AVP/#
 | Rui Fang | Anyverse Dynamics |
 | Yue Meng | Anyverse Dynamics |
 | **Wenda Xu**<sup>‡</sup> | Anyverse Dynamics |
-| Yuan He | Anyverse Dynamics |
+| Yuan He | Tsinghua University |
 | **Gao Huang**<sup>‡</sup> | Tsinghua University |
 
 ## Citation
