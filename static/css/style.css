@@ -184,7 +184,6 @@ a:hover { opacity: 0.8; }
 }
 .teaser-figure {
   margin: 0 auto;
-  max-width: 1080px;
 }
 
 /* =================================================================
@@ -246,13 +245,11 @@ a:hover { opacity: 0.8; }
   border-top: 1px solid var(--card-border);
 }
 
-/* Teaser figure needs to live inside the wider container but still
-   stay narrower than the section grid — override the global .figure
-   margin so it centers horizontally. */
+/* Teaser figure fills the same container that hero / section content uses,
+   so it visually aligns with the title block above and the abstract below. */
 .figure.teaser-figure {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1080px;
 }
 .figure.teaser-figure figcaption {
   text-align: center;
