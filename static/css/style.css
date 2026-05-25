@@ -177,6 +177,17 @@ a:hover { opacity: 0.8; }
 .btn-primary:hover { color: white; }
 
 /* =================================================================
+   Teaser (sits between hero and abstract, no extra eyebrow)
+   ================================================================= */
+.teaser {
+  padding: 24px 28px 36px;
+}
+.teaser-figure {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+/* =================================================================
    Sections
    ================================================================= */
 .section { padding: 90px 28px; }
